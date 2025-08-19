@@ -28,11 +28,18 @@ const nextConfig: NextConfig = {
     // Bundle analyzer in development
     if (process.env.ANALYZE === 'true') {
       const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+      
+      // Use static mode in CI environments to avoid port conflicts
+      const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+      
       config.plugins.push(
         new BundleAnalyzerPlugin({
-          analyzerMode: 'server',
+          analyzerMode: isCI ? 'static' : 'server',
           analyzerPort: isServer ? 8888 : 8889,
-          openAnalyzer: true,
+          openAnalyzer: !isCI, // Don't try to open browser in CI
+          reportFilename: isServer 
+            ? '../analyze/server.html' 
+            : './analyze/client.html',
         })
       );
     }
