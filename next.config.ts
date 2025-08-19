@@ -25,18 +25,16 @@ const nextConfig: NextConfig = {
   
   // Bundle analyzer configuration
   webpack: (config, { dev, isServer }) => {
-    // Bundle analyzer in development
+    // Bundle analyzer configuration
     if (process.env.ANALYZE === 'true') {
       const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       
-      // Use static mode in CI environments to avoid port conflicts
-      const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
-      
+      // Always use static mode to avoid port conflicts and CI issues
+      // This generates HTML files that can be viewed locally or uploaded as artifacts
       config.plugins.push(
         new BundleAnalyzerPlugin({
-          analyzerMode: isCI ? 'static' : 'server',
-          analyzerPort: isServer ? 8888 : 8889,
-          openAnalyzer: !isCI, // Don't try to open browser in CI
+          analyzerMode: 'static',
+          openAnalyzer: false, // Never try to open browser automatically
           reportFilename: isServer 
             ? '../analyze/server.html' 
             : './analyze/client.html',

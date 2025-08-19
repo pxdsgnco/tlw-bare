@@ -74,9 +74,34 @@ This project uses shadcn/ui with the "new-york" style and neutral base color. Co
 - You should never need to start the dev server unless you need explicit debugging. Assume the user is already running `npm run dev`
 - Note that the Playwright tests automatically start up a dev server for testing and won't reuse an existing one. If you need to do testing, either make sure the server is running at port 3000 or start one yourself via "npm run dev"
 
-## Frontend Development Standards
+## Development Standards & Best Practices
 
-⚠️ **MANDATORY**: Before any frontend development work, you MUST review and follow the [Frontend Development Rules](docs/frontend-development-rules.md). This document contains comprehensive industry-standard best practices that govern all frontend code in this project.
+⚠️ **MANDATORY**: Before ANY development work, you MUST review and follow ALL applicable documentation:
+
+### Core Standards (Required for ALL development)
+- **[Frontend Development Rules](docs/frontend-development-rules.md)** - Comprehensive industry-standard frontend practices
+- **[Architecture Best Practices](docs/architecture-best-practices.md)** - SOLID principles, DDD patterns, composition patterns  
+- **[Code Quality Checklist](docs/code-quality-checklist.md)** - Pre-commit verification standards and quality gates
+- **[Error Handling Patterns](docs/error-handling-patterns.md)** - Defensive programming and error boundary patterns
+- **[Testing Patterns](docs/testing-patterns.md)** - Comprehensive testing strategies and implementation
+- **[Observability Standards](docs/observability-standards.md)** - Logging, monitoring, metrics, and debugging
+
+### Content Architecture Documentation
+- **[Venue-Event Integration Architecture](docs/venue-event-integration-architecture.md)** - Comprehensive design for unified venue-event system, database schema, API design, and cross-linking strategy
+
+### Before Starting Any Task:
+1. **Review the Code Quality Checklist** to understand verification requirements
+2. **Check relevant architectural patterns** for the domain you're working in
+3. **Implement proper error handling** from the start
+4. **Include appropriate logging and monitoring**
+5. **Write tests** alongside your implementation
+
+### Quality Requirements:
+- ALL code must pass the pre-commit checklist
+- ALL components must have proper error boundaries
+- ALL API calls must implement retry logic and proper error handling  
+- ALL user interactions must be logged for observability
+- ALL functions must follow SOLID principles
 
 ## Code Standards
 
@@ -101,5 +126,34 @@ This project uses shadcn/ui with the "new-york" style and neutral base color. Co
 
 ## Development Workflow
 
+### Implementation Process
+1. **Planning Phase**:
+   - Create plan using TodoWrite tool for complex tasks
+   - Review relevant documentation from Core Standards
+   - Identify architectural patterns needed
+   - Plan error handling and observability integration
+
+2. **Development Phase**:
+   - Follow SOLID principles and domain-driven design
+   - Implement proper error boundaries and defensive programming  
+   - Add structured logging and metrics collection
+   - Write tests alongside implementation
+
+3. **Quality Assurance**:
+   - Run all quality checklist items before commit
+   - Verify error handling in all edge cases
+   - Ensure observability is properly integrated
+   - Validate performance requirements are met
+
 ### Version Control
 - Do not include the co-authored with claude note in commit message
+- Follow conventional commit format as defined in Code Quality Checklist
+- Include performance and quality metrics in commit descriptions when relevant
+
+### Quality Gates (ALL must pass)
+- ESLint validation: `npm run lint`
+- TypeScript compilation: `npm run build` 
+- All tests pass: `npm test` (when applicable)
+- Error handling verification complete
+- Observability integration verified
+- Performance impact assessed
