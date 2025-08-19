@@ -128,7 +128,7 @@ export default function BlogTopSection({ featuredArticle }: BlogTopSectionProps)
           letter-spacing: inherit;
         }
         .css-brmhkr {
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           display: -webkit-box;
         }

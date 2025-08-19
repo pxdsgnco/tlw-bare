@@ -44,3 +44,38 @@ Related Articles - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos
 Page header - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1012-18910&t=jCHlMGzGbL9DGJqN-4
 Filter - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1018-19073&t=jCHlMGzGbL9DGJqN-4
 Main - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1018-19095&t=jCHlMGzGbL9DGJqN-4
+
+## Event details page
+Page header - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-20081&t=jCHlMGzGbL9DGJqN-4
+Content grid - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-19865&t=jCHlMGzGbL9DGJqN-4
+Content grid / Left column - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-19886&t=jCHlMGzGbL9DGJqN-4
+Content grid / Left column / Image gallery - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-19887&t=jCHlMGzGbL9DGJqN-4
+Content grid / Left column / Main content - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-19888&t=jCHlMGzGbL9DGJqN-4
+Content grid / Right column - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-19891&t=jCHlMGzGbL9DGJqN-4
+Content grid / Right column / Primary info - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-19892&t=jCHlMGzGbL9DGJqN-4
+Content grid / Right column / Organizer details - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-19939&t=jCHlMGzGbL9DGJqN-4
+Similar events - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1048-20114&t=jCHlMGzGbL9DGJqN-4
+
+
+## Nightlife page
+Page header - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=777-5950&t=jCHlMGzGbL9DGJqN-4
+Filters - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1012-19034&t=jCHlMGzGbL9DGJqN-4
+Nightlife cards - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20528&t=jCHlMGzGbL9DGJqN-4
+Single nightlife card - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20262&t=jCHlMGzGbL9DGJqN-4
+
+
+## Nightlife details page
+Page header - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20969&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20605&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Left column - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20629&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Left column / Image gallery - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20630&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Left column / Image gallery thumbs - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20632&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Left column / Body content (about the venue) - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1074-21111&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Left column / Amenities and Features - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20642&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Left column / Special features - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20696&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Right column - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20728&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Right column / Location details - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20729&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Right column / Operating hours - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20752&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Right column / Reservation policy - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20786&t=ZT6NGfwFlwNYqzZl-4
+Main wrapper / Right column / Contact information - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1060-20805&t=ZT6NGfwFlwNYqzZl-4
+Similar venues - https://www.figma.com/design/qpMbpCBRwYC66UvZOX7Qzf/The-Lagos-Weekender-v0.1?node-id=1074-21006&t=ZT6NGfwFlwNYqzZl-4

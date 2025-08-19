@@ -72,9 +72,9 @@ export default function EventCard({ event, onClick, variant = 'grid' }: EventCar
             </div>
             
             <div className="box-border content-stretch flex flex-row gap-2 items-center justify-center p-0 relative shrink-0 w-full">
-              <div className="basis-0 font-medium grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#13151a] text-[18px] text-left tracking-[-0.18px]">
-                <p className="block leading-[24px]">{event.title}</p>
-              </div>
+              <h3 className="basis-0 font-medium grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#13151a] text-[20px] text-left tracking-[-0.4px] block leading-[1.45]">
+                {event.title}
+              </h3>
             </div>
             
             <div className="font-medium leading-[0] not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#fb7102] text-[14px] text-left tracking-[-0.14px] w-full line-clamp-1">
@@ -131,9 +131,9 @@ export default function EventCard({ event, onClick, variant = 'grid' }: EventCar
           
           {/* Title and Venue */}
           <div className="box-border content-stretch flex flex-col gap-2 items-start justify-start leading-[0] not-italic p-0 relative shrink-0 text-left w-full">
-            <div className="font-medium min-w-full relative shrink-0 text-[#13151a] text-[20px] tracking-[-0.4px]" style={{ width: "min-content" }}>
-              <p className="block leading-[1.45]">{event.title}</p>
-            </div>
+            <h3 className="font-medium min-w-full relative shrink-0 text-[#13151a] text-[20px] tracking-[-0.4px] block leading-[1.45]" style={{ width: "min-content" }}>
+              {event.title}
+            </h3>
             <div className="font-semibold relative shrink-0 text-[#fb7102] text-[16px] text-nowrap">
               <p className="block leading-[16px] whitespace-pre">{event.venue}</p>
             </div>

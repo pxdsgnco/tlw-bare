@@ -56,9 +56,9 @@ export default function BlogCard({
         </div>
         
         {/* Title */}
-        <div className="font-['Inter:Medium',_sans-serif] font-medium leading-[0] not-italic relative shrink-0 text-[#13151a] text-[18px] text-left tracking-[-0.18px] w-full text-left group-hover:text-[#fb7102] transition-colors">
-          <p className="block leading-[1.45]">{title}</p>
-        </div>
+        <h3 className="font-medium min-w-full relative shrink-0 text-[#13151a] text-[20px] tracking-[-0.4px] block leading-[1.45] group-hover:text-[#fb7102] transition-colors" style={{ width: "min-content" }}>
+          {title}
+        </h3>
         
         {/* Excerpt */}
         <div className="-webkit-box css-k4ppra font-['Inter:Medium',_sans-serif] font-medium leading-[0] not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#50576b] text-[15px] text-left w-full">
@@ -87,7 +87,7 @@ export default function BlogCard({
           letter-spacing: inherit;
         }
         .css-k4ppra {
-          -webkit-line-clamp: 3;
+          -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           display: -webkit-box;
         }

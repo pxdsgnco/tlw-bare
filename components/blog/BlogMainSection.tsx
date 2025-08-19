@@ -170,10 +170,10 @@ export default function BlogMainSection({
 
   return (
     <div className="box-border content-stretch flex flex-col gap-16 items-center justify-start p-0 relative w-full">
-      <div className="box-border content-stretch flex flex-col gap-20 items-center justify-start max-w-[1440px] pb-20 px-16 relative shrink-0 w-full">
+      <div className="box-border content-stretch flex flex-col gap-20 items-center justify-start max-w-[1440px] pt-5 pb-20 px-16 relative shrink-0 w-full">
         
         {/* Articles Grid - 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 w-full">
           {currentArticles.map((article) => (
             <div key={article.id} className="flex flex-col">
               <BlogCard

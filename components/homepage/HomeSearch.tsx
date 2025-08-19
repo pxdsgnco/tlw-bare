@@ -76,7 +76,7 @@ function SearchTab({ category, activeCategory, onClick, icon, label }: SearchTab
 }
 
 // Events view filter components
-function DateRangePicker({ dateRange, onChange: __onChange }: { dateRange: DateRange; onChange: (range: DateRange) => void }) {
+function DateRangePicker({ dateRange, onChange: _onChange }: { dateRange: DateRange; onChange: (range: DateRange) => void }) {
   return (
     <button className="box-border content-stretch flex flex-row gap-5 h-[55px] items-center justify-start px-5 py-1.5 relative rounded-[32px] shrink-0 border border-[#dddddd] hover:border-gray-300 transition-colors">
       <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0">
@@ -100,7 +100,7 @@ function DateRangePicker({ dateRange, onChange: __onChange }: { dateRange: DateR
   );
 }
 
-function CategorySelector({ category, onChange: __onChange }: { category: string; onChange: (category: string) => void }) {
+function CategorySelector({ category, onChange: _onChange }: { category: string; onChange: (category: string) => void }) {
   return (
     <button className="box-border content-stretch flex flex-row gap-5 h-[55px] items-center justify-start px-5 py-1.5 relative rounded-[32px] shrink-0 border border-[#dddddd] hover:border-gray-300 transition-colors">
       <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0">
@@ -115,7 +115,7 @@ function CategorySelector({ category, onChange: __onChange }: { category: string
   );
 }
 
-function BudgetSelector({ budget, onChange: __onChange }: { budget: string; onChange: (budget: string) => void }) {
+function BudgetSelector({ budget, onChange: _onChange }: { budget: string; onChange: (budget: string) => void }) {
   return (
     <button className="box-border content-stretch flex flex-row gap-5 h-[55px] items-center justify-start px-5 py-1.5 relative rounded-[32px] shrink-0 border border-[#dddddd] hover:border-gray-300 transition-colors">
       <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0">
@@ -133,7 +133,7 @@ function BudgetSelector({ budget, onChange: __onChange }: { budget: string; onCh
   );
 }
 
-function AreaSelector({ area, onChange: __onChange }: { area: string; onChange: (area: string) => void }) {
+function AreaSelector({ area, onChange: _onChange }: { area: string; onChange: (area: string) => void }) {
   return (
     <button className="basis-0 box-border content-stretch flex flex-row gap-5 grow h-[55px] items-center justify-start min-h-px min-w-px px-5 py-1.5 relative rounded-[32px] shrink-0 border border-[#dddddd] hover:border-gray-300 transition-colors">
       <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0">

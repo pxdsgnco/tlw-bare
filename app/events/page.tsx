@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import EventsPageHeader from '@/components/events/EventsPageHeader';
 import EventsFilter from '@/components/events/EventsFilter';
 import EventsMain from '@/components/events/EventsMain';
@@ -8,6 +9,7 @@ import EventsPagination from '@/components/events/EventsPagination';
 import { EventData } from '@/components/events/EventCard';
 
 export default function Events() {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
     timeFilter: 'ALL' as 'ALL' | 'DAY' | 'NIGHT',
@@ -116,7 +118,7 @@ export default function Events() {
 
   const handleEventClick = (event: EventData) => {
     console.log('Event clicked:', event.title);
-    // Here you would implement navigation to event details
+    router.push(`/events/${event.id}`);
   };
 
   const handlePageChange = (page: number) => {
