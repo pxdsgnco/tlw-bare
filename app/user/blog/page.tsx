@@ -1,11 +1,13 @@
 import ProtectedRoute from '@/components/ProtectedRoute';
+import PageHeader from '@/components/user/PageHeader';
 
 export default function UserBlog() {
   return (
     <ProtectedRoute>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center">/user/blog</h1>
-      </div>
+      <PageHeader 
+        title="Blog Management" 
+        subtitle="Create and manage your blog posts and articles" 
+      />
     </ProtectedRoute>
   );
 }

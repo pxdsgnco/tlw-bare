@@ -86,6 +86,7 @@ function UserDropdown({ user, setUserRole }: UserDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const userPages = [
+    { name: 'Dashboard', path: '/user/dashboard' },
     { name: 'Profile', path: '/user/profile' },
     { name: 'Bookmarks', path: '/user/bookmarks' },
     { name: 'Settings', path: '/user/settings' },

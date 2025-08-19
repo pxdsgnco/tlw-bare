@@ -1,11 +1,13 @@
 import ProtectedRoute from '@/components/ProtectedRoute';
+import PageHeader from '@/components/user/PageHeader';
 
 export default function UserPages() {
   return (
     <ProtectedRoute>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center">/user/pages</h1>
-      </div>
+      <PageHeader 
+        title="Page Management" 
+        subtitle="Create and manage static pages and content" 
+      />
     </ProtectedRoute>
   );
 }
