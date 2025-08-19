@@ -1,7 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PLACEHOLDER_IMAGES } from '@/lib/placeholderImages';
 
 interface NightlifeSpot {
   id: string;
@@ -15,25 +17,25 @@ const nightlifeSpots: NightlifeSpot[] = [
     id: '1',
     title: 'The Beach by Gusto',
     description: 'Tropicana Sunday event is all about good music, live amapiano mostly for ballers who want to party all night',
-    image: 'http://localhost:3845/assets/3afac2c738c7018d7bf309846caa67b780616cc4.png'
+    image: PLACEHOLDER_IMAGES.venue_1
   },
   {
     id: '2',
     title: 'Citi Lounge',
     description: "You shouldn't miss the CITI SUNDAYS, elevate your weekend with our delectable dining experience",
-    image: 'http://localhost:3845/assets/a8cb75f463bd045e94326e41d5168e6fad43935a.png'
+    image: PLACEHOLDER_IMAGES.venue_2
   },
   {
     id: '3',
     title: 'Bature Breweries',
     description: 'Best for after work casual hangouts, great and affordable food and drinks',
-    image: 'http://localhost:3845/assets/8046e173090ef29587471e65277be6fe55b92257.png'
+    image: PLACEHOLDER_IMAGES.venue_3
   },
   {
     id: '4',
     title: 'Hard Rock Cafe',
     description: 'Amapiano vibes, high energy, mostly for ballers and entertainers. Reservation needed.',
-    image: 'http://localhost:3845/assets/10463b494ce425e80cf3784c513861a17c41c5bd.png'
+    image: PLACEHOLDER_IMAGES.venue_1
   }
 ];
 
@@ -49,10 +51,15 @@ function NightlifeCard({ spot, onClick }: NightlifeCardProps) {
       onClick={() => onClick(spot)}
     >
       {/* Image */}
-      <div
-        className="bg-center bg-cover bg-no-repeat h-[280px] shrink-0 w-full overflow-hidden group-hover:scale-105 transition-transform duration-300"
-        style={{ backgroundImage: `url('${spot.image}')` }}
-      />
+      <div className="relative h-[280px] shrink-0 w-full overflow-hidden group-hover:scale-105 transition-transform duration-300">
+        <Image
+          src={spot.image}
+          alt={`${spot.title} nightlife venue`}
+          width={372}
+          height={280}
+          className="object-cover w-full h-full"
+        />
+      </div>
       
       {/* Content */}
       <div className="box-border content-stretch flex flex-row gap-8 items-start justify-start p-0 relative shrink-0 w-full">

@@ -1,7 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { PLACEHOLDER_IMAGES } from '@/lib/placeholderImages';
 
 interface Story {
   id: string;
@@ -11,20 +13,20 @@ interface Story {
 }
 
 const stories: Story[] = [
-  { id: '1', title: 'Ballers Carnival', thumbnail: 'http://localhost:3845/assets/d37a89481ea529deeaf50034865c73e1d3fae330.png' },
-  { id: '2', title: 'Moroccan NightBar 38', thumbnail: 'http://localhost:3845/assets/e92bbeabdc9a12d15f841e9faf5982e29ea6c5aa.png' },
-  { id: '3', title: 'Capital Club', thumbnail: 'http://localhost:3845/assets/486df3fc48656b28a40d576c2053ebcfd0e0c447.png' },
-  { id: '4', title: 'Malinese Hard Rock Cafe', thumbnail: 'http://localhost:3845/assets/8b7676f3de862ecd61a867b1e81e1df9bafb35d4.png' },
-  { id: '5', title: 'Bar 38', thumbnail: 'http://localhost:3845/assets/7b4aa06550511e90a4f5933d8ae934c06522944a.png' },
-  { id: '6', title: 'Lagos Galleria', thumbnail: 'http://localhost:3845/assets/2bb53d140ed5d82d07d08411fbc86274b6489195.png' },
-  { id: '7', title: 'Night of a Thousand Laffs', thumbnail: 'http://localhost:3845/assets/6e29e43c28d985b3f28b7f4663e73e90d69a8935.png' },
-  { id: '8', title: 'Basketmouth', thumbnail: 'http://localhost:3845/assets/e5c77c9082b536148adfec28a455c37d857ff6e2.png' },
-  { id: '9', title: 'The Coliseum', thumbnail: 'http://localhost:3845/assets/a45480b8b703f378a8b40c140267037cc1f9392e.png' },
-  { id: '10', title: 'Sip Lounge rave', thumbnail: 'http://localhost:3845/assets/219ec81d41961f75b8b444e070118c93477195b8.png' },
-  { id: '11', title: 'Quilox Gala', thumbnail: 'http://localhost:3845/assets/7479c09664097447c40e44a809c65847dcd93360.png' },
-  { id: '12', title: 'Rendezvous', thumbnail: 'http://localhost:3845/assets/394685c14b893b65ac3248f46d13fd466b453c02.png' },
-  { id: '13', title: 'Prima Dona Ikoyi Club', thumbnail: 'http://localhost:3845/assets/fc9438b915bf3580a2e3c9966f311eee25aa2533.png' },
-  { id: '14', title: 'Severe', thumbnail: 'http://localhost:3845/assets/f13dad9ad00a251b654e2fdb3bf569de05eda269.png' }
+  { id: '1', title: 'Ballers Carnival', thumbnail: PLACEHOLDER_IMAGES.event_1 },
+  { id: '2', title: 'Moroccan NightBar 38', thumbnail: PLACEHOLDER_IMAGES.event_2 },
+  { id: '3', title: 'Capital Club', thumbnail: PLACEHOLDER_IMAGES.event_3 },
+  { id: '4', title: 'Malinese Hard Rock Cafe', thumbnail: PLACEHOLDER_IMAGES.event_1 },
+  { id: '5', title: 'Bar 38', thumbnail: PLACEHOLDER_IMAGES.event_2 },
+  { id: '6', title: 'Lagos Galleria', thumbnail: PLACEHOLDER_IMAGES.event_3 },
+  { id: '7', title: 'Night of a Thousand Laffs', thumbnail: PLACEHOLDER_IMAGES.event_1 },
+  { id: '8', title: 'Basketmouth', thumbnail: PLACEHOLDER_IMAGES.event_2 },
+  { id: '9', title: 'The Coliseum', thumbnail: PLACEHOLDER_IMAGES.event_3 },
+  { id: '10', title: 'Sip Lounge rave', thumbnail: PLACEHOLDER_IMAGES.event_1 },
+  { id: '11', title: 'Quilox Gala', thumbnail: PLACEHOLDER_IMAGES.event_2 },
+  { id: '12', title: 'Rendezvous', thumbnail: PLACEHOLDER_IMAGES.event_3 },
+  { id: '13', title: 'Prima Dona Ikoyi Club', thumbnail: PLACEHOLDER_IMAGES.event_1 },
+  { id: '14', title: 'Severe', thumbnail: PLACEHOLDER_IMAGES.event_2 }
 ];
 
 interface StoryItemProps {
@@ -42,11 +44,14 @@ function StoryItem({ story, onClick }: StoryItemProps) {
         {/* Story Circle with Border */}
         <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-[5px] relative rounded-full shrink-0 w-[82px] group-hover:scale-105 transition-transform">
           <div className="absolute border-[#fb7102] border-[3px] border-solid inset-0 pointer-events-none rounded-full" />
-          <div
-            className="basis-0 bg-[#eeeeee] bg-center bg-cover grow h-[72px] min-h-px min-w-px relative rounded-full shrink-0"
-            style={{ backgroundImage: `url('${story.thumbnail}')` }}
-          >
-            <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[72px] w-full rounded-full" />
+          <div className="basis-0 bg-[#eeeeee] grow h-[72px] min-h-px min-w-px relative rounded-full shrink-0 overflow-hidden">
+            <Image
+              src={story.thumbnail}
+              alt={`${story.title} story thumbnail`}
+              width={72}
+              height={72}
+              className="object-cover w-full h-full rounded-full"
+            />
           </div>
         </div>
         

@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { PLACEHOLDER_IMAGES } from '@/lib/placeholderImages';
 
 interface FeaturedEvent {
   id: string;
@@ -18,7 +20,7 @@ const featuredEvents: FeaturedEvent[] = [
     title: 'Make Music Lagos',
     date: 'Jun 21, 2025',
     venue: 'LiveSpot Entertarium',
-    image: 'http://localhost:3845/assets/f987f6ea2a8e6f9f0ef482dda1639005c271d50d.png',
+    image: PLACEHOLDER_IMAGES.hero_1,
     category: 'Featured Event'
   },
   {
@@ -26,7 +28,7 @@ const featuredEvents: FeaturedEvent[] = [
     title: 'Lagos Jazz Festival',
     date: 'Jul 15, 2025',
     venue: 'Tafawa Balewa Square',
-    image: 'http://localhost:3845/assets/f987f6ea2a8e6f9f0ef482dda1639005c271d50d.png',
+    image: PLACEHOLDER_IMAGES.hero_2,
     category: 'Featured Event'
   },
   {
@@ -34,7 +36,7 @@ const featuredEvents: FeaturedEvent[] = [
     title: 'Afrobeats Concert',
     date: 'Aug 10, 2025', 
     venue: 'National Stadium',
-    image: 'http://localhost:3845/assets/f987f6ea2a8e6f9f0ef482dda1639005c271d50d.png',
+    image: PLACEHOLDER_IMAGES.hero_1,
     category: 'Featured Event'
   },
   {
@@ -42,7 +44,7 @@ const featuredEvents: FeaturedEvent[] = [
     title: 'Comedy Night Special',
     date: 'Sep 5, 2025',
     venue: 'Eko Convention Centre',
-    image: 'http://localhost:3845/assets/f987f6ea2a8e6f9f0ef482dda1639005c271d50d.png',
+    image: PLACEHOLDER_IMAGES.hero_2,
     category: 'Featured Event'
   },
   {
@@ -50,7 +52,7 @@ const featuredEvents: FeaturedEvent[] = [
     title: 'Fashion Week Lagos',
     date: 'Oct 20, 2025',
     venue: 'Victoria Island',
-    image: 'http://localhost:3845/assets/f987f6ea2a8e6f9f0ef482dda1639005c271d50d.png',
+    image: PLACEHOLDER_IMAGES.hero_1,
     category: 'Featured Event'
   }
 ];
@@ -95,10 +97,17 @@ export default function FeaturedTrends() {
         <div className="relative w-full group">
           
           {/* Main Slide */}
-          <div
-            className="bg-center bg-cover bg-no-repeat box-border content-stretch flex flex-col gap-[499px] h-[692px] items-start justify-end p-[36px] relative shrink-0 w-full overflow-hidden transition-all duration-500 ease-in-out"
-            style={{ backgroundImage: `url('${currentEvent.image}')` }}
-          >
+          <div className="relative box-border content-stretch flex flex-col gap-[499px] h-[692px] items-start justify-end p-[36px] shrink-0 w-full overflow-hidden transition-all duration-500 ease-in-out">
+            
+            {/* Background Image */}
+            <Image
+              src={currentEvent.image}
+              alt={`${currentEvent.title} featured event`}
+              width={1200}
+              height={692}
+              priority={true}
+              className="absolute inset-0 object-cover w-full h-full z-0"
+            />
             
             {/* Gradient Overlay */}
             <div className="absolute bg-gradient-to-b from-transparent from-[62.572%] inset-0 to-black" />

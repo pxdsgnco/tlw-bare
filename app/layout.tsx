@@ -27,6 +27,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preload critical images for LCP optimization */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/homepage/hero-placeholder-1.svg"
+          type="image/svg+xml"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/events/hero-placeholder-2.svg"
+          type="image/svg+xml"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

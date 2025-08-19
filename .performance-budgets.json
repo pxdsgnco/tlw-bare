@@ -1,0 +1,118 @@
+{
+  "budgets": [
+    {
+      "path": "/*",
+      "timings": [
+        {
+          "metric": "first-contentful-paint",
+          "budget": 2000,
+          "tolerance": 200
+        },
+        {
+          "metric": "largest-contentful-paint", 
+          "budget": 2500,
+          "tolerance": 300
+        },
+        {
+          "metric": "cumulative-layout-shift",
+          "budget": 0.1,
+          "tolerance": 0.05
+        },
+        {
+          "metric": "first-input-delay",
+          "budget": 100,
+          "tolerance": 50
+        },
+        {
+          "metric": "speed-index",
+          "budget": 3000,
+          "tolerance": 500
+        },
+        {
+          "metric": "interactive",
+          "budget": 3000,
+          "tolerance": 500
+        }
+      ],
+      "resourceCounts": [
+        {
+          "resourceType": "script",
+          "budget": 15
+        },
+        {
+          "resourceType": "stylesheet", 
+          "budget": 5
+        },
+        {
+          "resourceType": "image",
+          "budget": 30
+        },
+        {
+          "resourceType": "font",
+          "budget": 4
+        }
+      ],
+      "resourceSizes": [
+        {
+          "resourceType": "script",
+          "budget": 250
+        },
+        {
+          "resourceType": "stylesheet",
+          "budget": 50
+        },
+        {
+          "resourceType": "image", 
+          "budget": 500
+        },
+        {
+          "resourceType": "font",
+          "budget": 100
+        },
+        {
+          "resourceType": "total",
+          "budget": 1000
+        }
+      ]
+    },
+    {
+      "path": "/blog/*",
+      "timings": [
+        {
+          "metric": "largest-contentful-paint",
+          "budget": 2000
+        }
+      ],
+      "resourceSizes": [
+        {
+          "resourceType": "image",
+          "budget": 300
+        }
+      ]
+    },
+    {
+      "path": "/events/*",
+      "timings": [
+        {
+          "metric": "largest-contentful-paint", 
+          "budget": 2200
+        }
+      ]
+    },
+    {
+      "path": "/nightlife/*",
+      "timings": [
+        {
+          "metric": "largest-contentful-paint",
+          "budget": 2300
+        }
+      ],
+      "resourceSizes": [
+        {
+          "resourceType": "image",
+          "budget": 400
+        }
+      ]
+    }
+  ]
+}

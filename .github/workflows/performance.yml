@@ -1,0 +1,146 @@
+name: Performance Testing
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  schedule:
+    # Run performance tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  performance-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Start application
+      run: |
+        npm start &
+        sleep 10
+        
+    - name: Run Lighthouse CI
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        configPath: './lighthouserc.js'
+        temporaryPublicStorage: true
+        
+    - name: Run custom performance check
+      run: npm run performance:check
+      
+    - name: Upload performance report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: performance-report
+        path: |
+          performance-reports/
+          lighthouse-*.json
+          
+    - name: Comment PR with performance results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Find the latest performance report
+          const reportsDir = 'performance-reports';
+          if (fs.existsSync(reportsDir)) {
+            const files = fs.readdirSync(reportsDir)
+              .filter(f => f.startsWith('performance-report-'))
+              .sort()
+              .reverse();
+              
+            if (files.length > 0) {
+              const report = JSON.parse(fs.readFileSync(path.join(reportsDir, files[0])));
+              
+              const statusEmoji = {
+                'PASS': '✅',
+                'WARNING': '⚠️', 
+                'FAIL': '❌'
+              };
+              
+              const comment = `
+              ## 📈 Performance Audit Results
+              
+              **Overall Status:** ${statusEmoji[report.summary.overallStatus]} ${report.summary.overallStatus}
+              
+              ### 🚀 Core Metrics
+              - **Performance Score:** ${report.metrics.scores.performance}/100
+              - **First Contentful Paint:** ${Math.round(report.metrics.coreWebVitals.fcp)}ms
+              - **Largest Contentful Paint:** ${Math.round(report.metrics.coreWebVitals.lcp)}ms
+              - **Cumulative Layout Shift:** ${report.metrics.coreWebVitals.cls.toFixed(3)}
+              
+              ### 🔧 Top Recommendations
+              ${report.recommendations.slice(0, 3).map((rec, i) => 
+                `${i + 1}. **${rec.title}** (${rec.priority})`
+              ).join('\\n')}
+              
+              <details>
+              <summary>📊 Detailed Results</summary>
+              
+              #### Budget Status
+              ${Object.entries(report.budgetStatus).map(([key, status]) => 
+                `- ${status.status === 'PASS' ? '✅' : '❌'} ${key}: ${status.value} (budget: ${status.budget})`
+              ).join('\\n')}
+              
+              #### Top Opportunities
+              ${report.metrics.opportunities.slice(0, 5).map(opp => 
+                `- ${opp.title} (${Math.round(opp.savings)}ms savings)`
+              ).join('\\n')}
+              
+              </details>
+              
+              *Report generated at ${report.timestamp}*
+              `;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            }
+          }
+          
+  bundle-analysis:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Analyze bundle size
+      run: npm run analyze
+      
+    - name: Upload bundle analysis
+      uses: actions/upload-artifact@v4
+      with:
+        name: bundle-analysis
+        path: .next/analyze/
