@@ -12,7 +12,9 @@ import {
   Ticket, 
   Landmark, 
   Settings,
-  ChevronRight 
+  PenTool,
+  FileText,
+  BookOpen
 } from 'lucide-react';
 
 interface SidebarNavItem {
@@ -27,6 +29,7 @@ const sidebarNavItems: SidebarNavItem[] = [
     name: 'Dashboard',
     path: '/user/dashboard',
     icon: LayoutDashboard,
+    minRole: 'Curator',
   },
   {
     name: 'Account Details', 
@@ -51,47 +54,30 @@ const sidebarNavItems: SidebarNavItem[] = [
     minRole: 'Curator',
   },
   {
+    name: 'Stories',
+    path: '/user/stories',
+    icon: BookOpen,
+    minRole: 'Admin',
+  },
+  {
+    name: 'My Blog',
+    path: '/user/blog',
+    icon: PenTool,
+    minRole: 'Admin',
+  },
+  {
+    name: 'Pages',
+    path: '/user/pages',
+    icon: FileText,
+    minRole: 'Admin',
+  },
+  {
     name: 'Preferences',
     path: '/user/settings',
     icon: Settings,
   },
 ];
 
-function Breadcrumbs() {
-  const pathname = usePathname();
-  
-  // Generate breadcrumb items from pathname
-  const pathSegments = pathname.split('/').filter(Boolean);
-  const breadcrumbItems = [
-    { name: 'Home', path: '/' },
-    ...pathSegments.slice(1).map((segment, index) => ({
-      name: segment.charAt(0).toUpperCase() + segment.slice(1).replace('-', ' '),
-      path: '/' + pathSegments.slice(0, index + 2).join('/'),
-    })),
-  ];
-
-  return (
-    <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start px-0 py-2 relative shrink-0 w-full">
-      {breadcrumbItems.map((item, index) => (
-        <div key={item.path} className="flex items-center gap-2">
-          {index > 0 && (
-            <ChevronRight className="w-4 h-4 text-[#525866]" />
-          )}
-          <Link
-            href={item.path}
-            className={`font-['BDO_Grotesk'] text-[14px] leading-[20px] text-left text-nowrap ${
-              index === breadcrumbItems.length - 1
-                ? 'text-[#697289] font-normal'
-                : 'text-[#525866] font-semibold hover:text-[#fb7102] transition-colors'
-            }`}
-          >
-            {item.name}
-          </Link>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 function Sidebar() {
   const pathname = usePathname();
@@ -101,7 +87,7 @@ function Sidebar() {
     !item.minRole || (user && hasAccess(user.role, item.path))
   );
 
-  // Icon assets from Figma
+  // Icon assets from Figma (for existing items)
   const iconAssets: Record<string, string> = {
     Dashboard: "http://localhost:3845/assets/3eea96cb8facd83a539a4e5aa3964cfe1d810c16.svg",
     'Account Details': "http://localhost:3845/assets/3ad2b9e3e637108ae5eb9dcacfeb8710d640eee5.svg",
@@ -111,22 +97,47 @@ function Sidebar() {
     Preferences: "http://localhost:3845/assets/7a4d02080d3cf80131b2d85fc3db48bfe8232e2d.svg"
   };
 
+  // Helper function to render icon (either Image or Lucide icon)
+  const renderIcon = (item: SidebarNavItem, isActive: boolean) => {
+    const iconColorFilter = isActive 
+      ? 'brightness(0) saturate(100%) invert(42%) sepia(96%) saturate(1082%) hue-rotate(11deg) brightness(95%) contrast(97%)'
+      : 'brightness(0) saturate(100%) invert(42%) sepia(7%) saturate(1211%) hue-rotate(201deg) brightness(95%) contrast(90%)';
+    
+    if (iconAssets[item.name]) {
+      // Use Image for items with Figma assets
+      return (
+        <Image
+          alt=""
+          className="block max-w-none size-full"
+          src={iconAssets[item.name]}
+          width={20}
+          height={20}
+          style={{ filter: iconColorFilter }}
+        />
+      );
+    } else {
+      // Use Lucide React icon for new items
+      const IconComponent = item.icon;
+      return <IconComponent className={`w-5 h-5 ${isActive ? 'text-[#fb7102]' : 'text-[#6B7280]'}`} />;
+    }
+  };
+
   const lineAsset = "http://localhost:3845/assets/bc2beaf28c7b8ea56246aac5d78ae9300c103c14.svg";
 
   return (
-    <aside className="bg-[#ffffff] box-border content-stretch flex flex-col gap-8 items-start justify-start max-w-[280px] p-[16px] relative rounded-md shrink-0">
+    <aside className="bg-[#ffffff] box-border content-stretch flex flex-col gap-8 items-start justify-start w-[280px] p-[16px] relative rounded-md shrink-0">
       <div
         aria-hidden="true"
         className="absolute border border-[#d9dfe8] border-solid inset-[-1px] pointer-events-none rounded-[7px]"
       />
       <nav className="relative shrink-0 w-full">
-        <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border content-stretch flex flex-col gap-1 items-start justify-start p-0 relative w-full">
+        <ul className="bg-clip-padding border-0 border-[transparent] border-solid box-border content-stretch flex flex-col gap-1 items-start justify-start p-0 relative w-full list-none">
           {availableNavItems.map((item, index) => {
             const isActive = pathname === item.path;
             const showDivider = index === availableNavItems.length - 2 && availableNavItems[availableNavItems.length - 1]?.name === 'Preferences';
             
             return (
-              <div key={item.path}>
+              <li key={item.path} className="w-full">
                 {showDivider && (
                   <div className="h-0 relative shrink-0 w-full" style={{ marginBottom: '4px' }}>
                     <div className="absolute bottom-0 left-0 right-0 top-[-1px]">
@@ -141,17 +152,11 @@ function Sidebar() {
                       aria-hidden="true"
                       className="absolute border-[#fb7102] border-[0px_0px_0px_2px] border-solid inset-0 pointer-events-none"
                     />
-                    <Link href={item.path}>
+                    <Link href={item.path} className="block w-full">
                       <div className="bg-clip-padding border-[0px_0px_0px_2px] border-[transparent] border-solid box-border content-stretch flex flex-row gap-3 items-center justify-start px-4 py-2.5 relative w-full">
                         <div className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0">
                           <div className="relative shrink-0 size-5">
-                            <Image
-                              alt=""
-                              className="block max-w-none size-full"
-                              src={iconAssets[item.name]}
-                              width={20}
-                              height={20}
-                            />
+                            {renderIcon(item, true)}
                           </div>
                         </div>
                         <div className="basis-0 font-['Inter:Semi_Bold',_sans-serif] font-semibold grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#fb7102] text-[15px] text-left">
@@ -162,7 +167,7 @@ function Sidebar() {
                   </div>
                 ) : (
                   <div className="relative shrink-0 w-full hover:bg-gray-50 transition-colors">
-                    <Link href={item.path}>
+                    <Link href={item.path} className="block w-full">
                       <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border content-stretch flex flex-row gap-2 items-center justify-start p-[12px] relative w-full">
                         <div className={`box-border content-stretch flex flex-row items-center justify-start p-0 relative shrink-0 ${
                           item.name === 'Dashboard' ? 'gap-[6.667px]' : 
@@ -170,16 +175,10 @@ function Sidebar() {
                           'gap-[6.667px]'
                         }`}>
                           <div className="relative shrink-0 size-5">
-                            <Image
-                              alt=""
-                              className="block max-w-none size-full"
-                              src={iconAssets[item.name]}
-                              width={20}
-                              height={20}
-                            />
+                            {renderIcon(item, false)}
                           </div>
                         </div>
-                        <div className={`basis-0 font-['Inter:Regular',_sans-serif] font-normal grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-gray-500 text-left ${
+                        <div className={`basis-0 font-['Inter:Regular',_sans-serif] font-normal grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#6B7280] text-left ${
                           item.name === 'Nightlife Spots' ? 'text-[16px]' : 'text-[15px]'
                         }`}>
                           <p className="block leading-[1.6]">{item.name}</p>
@@ -188,10 +187,10 @@ function Sidebar() {
                     </Link>
                   </div>
                 )}
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </nav>
     </aside>
   );
@@ -206,9 +205,6 @@ export default function UserLayout({
     <div className="bg-[#ffffff] box-border content-stretch flex flex-col items-start justify-start p-0 relative min-h-screen w-full">
       {/* Main content area */}
       <div className="box-border content-stretch flex flex-col gap-5 items-center justify-start max-w-[1440px] min-h-[836px] px-8 py-10 relative shrink-0 w-full mx-auto">
-        {/* Breadcrumbs */}
-        <Breadcrumbs />
-        
         {/* Two-column layout: Sidebar + Content */}
         <div className="box-border content-stretch flex flex-row gap-14 items-start justify-start p-0 relative shrink-0 w-full">
           {/* Sidebar */}

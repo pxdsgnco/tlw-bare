@@ -31,6 +31,7 @@ export const rolePermissions = {
     '/blog',
     '/community',
     '/weekend-guide',
+    '/user/dashboard',
     '/user/profile',
     '/user/bookmarks',
     '/user/settings',
@@ -44,11 +45,13 @@ export const rolePermissions = {
     '/blog',
     '/community',
     '/weekend-guide',
+    '/user/dashboard',
     '/user/profile',
     '/user/bookmarks',
     '/user/settings',
     '/user/events',
     '/user/nightlife',
+    '/user/stories',
     '/user/blog',
     '/user/pages'
   ]

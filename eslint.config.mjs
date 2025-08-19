@@ -13,15 +13,21 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      // Allow unused parameters that start with underscore (intentionally unused)
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_",
-          "caughtErrorsIgnorePattern": "^_"
-        }
-      ]
+      // Basic code quality
+      "prefer-const": "error",
+      "no-var": "error",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": ["error", {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }],
+      
+      // React best practices
+      "react/jsx-key": "error",
+      "react/self-closing-comp": "warn",
+      
+      // Console usage
+      "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     }
   }
 ];
