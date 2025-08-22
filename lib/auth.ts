@@ -2,15 +2,10 @@ export type UserRole = 'Viewer' | 'Curator' | 'Admin';
 
 export interface User {
   id: string;
-  name: string;
+  email: string;
+  name?: string;
   role: UserRole;
 }
-
-export const mockUser: User = {
-  id: '1',
-  name: 'Anderson Enegbuma',
-  role: 'Admin' // Change this to test different roles
-};
 
 export const rolePermissions = {
   Viewer: [
@@ -53,10 +48,12 @@ export const rolePermissions = {
     '/user/nightlife',
     '/user/stories',
     '/user/blog',
-    '/user/pages'
+    '/user/pages',
+    '/user/admin/featured-events'
   ]
 };
 
-export function hasAccess(userRole: UserRole, path: string): boolean {
+export function hasAccess(userRole: UserRole | undefined, path: string): boolean {
+  if (!userRole) return false;
   return rolePermissions[userRole].includes(path);
 }
