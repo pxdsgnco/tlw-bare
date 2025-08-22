@@ -41,7 +41,7 @@ export function ResetPasswordForm() {
                 Check your email
               </h3>
               <div className="mt-2 text-sm text-green-700">
-                <p>We've sent a password reset link to {email}</p>
+                <p>We&apos;ve sent a password reset link to {email}</p>
               </div>
               <div className="mt-4">
                 <button
@@ -62,7 +62,7 @@ export function ResetPasswordForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <p className="text-sm text-gray-600 mb-4">
-          Enter your email address and we'll send you a link to reset your password.
+          Enter your email address and we&apos;ll send you a link to reset your password.
         </p>
         <label htmlFor="reset-email" className="block text-sm font-medium text-gray-700">
           Email Address

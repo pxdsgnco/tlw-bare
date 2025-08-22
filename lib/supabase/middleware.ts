@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
-export async function updateSession(request: NextRequest) {
+export async function updateSession(request: NextRequest, _options?: any) {
   let supabaseResponse = NextResponse.next({
     request,
   });
@@ -32,7 +32,7 @@ export async function updateSession(request: NextRequest) {
   // vulnerable to CSRF attacks.
 
   const {
-    data: { user },
+    data: { user: _user },
   } = await supabase.auth.getUser();
 
   // No redirect needed - the ProtectedRoute component will handle showing the modal
